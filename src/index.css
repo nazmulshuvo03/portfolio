@@ -1,13 +1,160 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    --off-white: #fafafa;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.left_section,
+.right_section {
+    margin: 0;
+    padding: 0;
+}
+
+.left_section {
+    width: 15%;
+    height: auto;
+    position: static;
+}
+
+.right_section {
+    width: 85%;
+    height: auto;
+    position: static;
+}
+
+.row {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/************ Navarea ***********/
+.navarea {
+    background-color: var(--off-white);
+    z-index: 1000;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
+    width: auto;
+    height: 100%;
+}
+
+.nav_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: 100%;
+    font-size: 1rem;
+    overflow: auto;
+    position: fixed;
+}
+
+.nav_items {
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+.section_name {
+    display: block;
+    color: #333;
+}
+
+.section_name > .active {
+    border-bottom: 0.1rem solid #333;
+}
+
+.section_name:hover {
+    color: black;
+    cursor: pointer;
+}
+
+/************ Intro ****************/
+.intro {
+    display: block;
+    width: auto;
+    height: 40rem;
+    background-image: url("https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+}
+
+/*********** Projects *************/
+.projects_title {
+    font-size: 4rem;
+    padding: 2rem;
+}
+
+/********* Education **************/
+.education {
+    padding-top: 2rem;
+}
+
+.education_title {
+    font-size: 4rem;
+    padding: 1rem;
+}
+
+.university_degree {
+    padding: 2rem;
+}
+
+.versity_dept {
+    font-size: 2rem;
+}
+
+.versity_name {
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.versity_area {
+    font-size: 1.5rem;
+}
+
+.online_degree_title {
+    font-size: 2.5rem;
+    padding: 1rem;
+}
+
+/******** Contacts *********/
+.contact {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+}
+
+.contacts_title {
+    font-size: 4rem;
+    padding: 1rem;
+}
+
+.name_contact {
+    font-size: 2rem;
+}
+
+.contact_font {
+    font-size: 1.2rem;
+}
+
+.contact_icon {
+    padding-right: 0.5rem;
+}
+
+.social_links_title {
+    font-size: 2rem;
+}
+
+.social_links {
+    font-size: 2rem;
+}
+
+.connections {
+    background-color: var(--off-white);
+    padding-right: 1.2rem;
+    position: static;
+}
+
+.scroll_top_section {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+}
+
+.scroll_top_button {
+    font-size: 2rem;
 }
