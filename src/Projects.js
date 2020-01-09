@@ -68,28 +68,12 @@ function Projects({ id }) {
         source_link: "https://github.com/nazmulshuvo03/Mojar-Strore"
     };
 
-    var otherCard = {
-        images: [
-            movieReview01,
-            movieReview02,
-            movieReview03,
-            movieReview04,
-            movieReview05
-        ],
-        title: "Movie Review",
-        description:
-            "This is site where someone can Signup and Login using email and password. And write a review of a movie. Here Notification function is used from firebase.",
-        technologies: "React, Redux, Firebase",
-        visit_link: "https://movie-review-03.netlify.com",
-        source_link: "https://github.com/nazmulshuvo03/Movie_Review"
-    };
-
     return (
         <div className="projects" id={id}>
             <div className="projects_title text-center">
                 <i className="fas fa-tasks"></i> Projects
             </div>
-            <div className="row row-cols-1 row-cols-md-4">
+            <div className="row row-cols-1 row-cols-md-3">
                 <div className="col mb-4">
                     <WebProjectCard card={movieReviewCard} />
                 </div>
@@ -98,9 +82,6 @@ function Projects({ id }) {
                 </div>
                 <div className="col mb-4">
                     <WebProjectCard card={mojarStoreCard} />
-                </div>
-                <div className="col mb-4">
-                    <WebProjectCard card={otherCard} />
                 </div>
             </div>
         </div>
