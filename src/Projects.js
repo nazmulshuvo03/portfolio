@@ -7,6 +7,9 @@ import movieReview02 from "./Image/movieReview02.png";
 import movieReview03 from "./Image/movieReview03.png";
 import movieReview04 from "./Image/movieReview04.png";
 import movieReview05 from "./Image/movieReview05.png";
+import movieReview06 from "./Image/movieReview06.png";
+import movieReview07 from "./Image/movieReview07.png";
+import movieReview08 from "./Image/movieReview08.png";
 
 import gameRanking01 from "./Image/gameRanking01.png";
 import gameRanking02 from "./Image/gameRanking02.png";
@@ -27,7 +30,10 @@ function Projects({ id }) {
             movieReview02,
             movieReview03,
             movieReview04,
-            movieReview05
+            movieReview05,
+            movieReview06,
+            movieReview07,
+            movieReview08
         ],
         title: "Movie Review",
         description:
