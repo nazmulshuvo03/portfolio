@@ -37,7 +37,7 @@ function Projects({ id }) {
         ],
         title: "Movie Review",
         description:
-            "This is a website where anyone can sign up and post the reviews of the movies they have watched. The whole website is created using React. Redux is used here to manage data flow. The backend, along with database ,is handeled by Firebase. Firebase notification function  is also used here to get the user notified about recent activities. User can search reviews here in the dashboard. There is another search facility, where user can search movies from MovieDB database and use the name and poster from their database.",
+            "This is a website where anyone can sign up and post the reviews of the movies they have watched. The whole website is created using React. Redux is used here to manage data flow. The backend, along with database, is handled with Firebase. Firebase notification function  is used here to get the user notified about recent activities. User can search reviews here in the dashboard. There is another search facility, where user can search movies from MovieDB database and use the name and poster from their database.",
         technologies: "React, Redux, Firebase",
         visit_link: "https://movie-review-03.netlify.com",
         source_link: "https://github.com/nazmulshuvo03/Movie_Review"
@@ -69,7 +69,7 @@ function Projects({ id }) {
         ],
         title: "Mojar Store",
         description:
-            "This is an online shopping store, built with React. Here users can add their favourite items into a cart and remove them if necessary. When the shopping is done, they can checkout using Paypal. Data is managed here with React Context.",
+            "This is an online shopping store, built with React. Here users can add their favourite items into a cart and remove them if necessary. When the shopping is done, they can checkout using Paypal. Data flow is managed here with React Context.",
         technologies: "React, React Context",
         visit_link: "https://mojar-store.netlify.com",
         source_link: "https://github.com/nazmulshuvo03/Mojar-Strore"
