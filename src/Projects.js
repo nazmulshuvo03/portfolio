@@ -37,7 +37,7 @@ function Projects({ id }) {
         ],
         title: "Movie Review",
         description:
-            "This is site where someone can Signup and Login using email and password. And write a review of a movie. Here Notification function is used from firebase.",
+            "This is a website where anyone can sign up and post the reviews of the movies they have watched. The whole website is created using React. Redux is used here to manage data flow. The backend, along with database ,is handeled by Firebase. Firebase notification function  is also used here to get the user notified about recent activities. User can search reviews here in the dashboard. There is another search facility, where user can search movies from MovieDB database and use the name and poster from their database.",
         technologies: "React, Redux, Firebase",
         visit_link: "https://movie-review-03.netlify.com",
         source_link: "https://github.com/nazmulshuvo03/Movie_Review"
@@ -52,7 +52,8 @@ function Projects({ id }) {
             gameRanking05
         ],
         title: "Game Ranking System",
-        description: "This is a Ranking System for Foosball game.",
+        description:
+            "Foosball is an indoor game. People can play it in their office or in a club. This game can be played one vs one, two vs two or even one vs two players. If they need to rank their players and keep their winning records, they can use this web app. This app can keep their game records and visualize it with beautiful progressbars. This app is built with React. And data flow is managed by Redux.",
         technologies: "React, Redux",
         visit_link: "https://game-ranking-system.netlify.com",
         source_link: "https://github.com/nazmulshuvo03/Game_Ranking_System"
@@ -68,7 +69,7 @@ function Projects({ id }) {
         ],
         title: "Mojar Store",
         description:
-            "This is online shopping store with cart facility and checking out with Paypal.",
+            "This is an online shopping store, built with React. Here users can add their favourite items into a cart and remove them if necessary. When the shopping is done, they can checkout using Paypal. Data is managed here with React Context.",
         technologies: "React, React Context",
         visit_link: "https://mojar-store.netlify.com",
         source_link: "https://github.com/nazmulshuvo03/Mojar-Strore"
