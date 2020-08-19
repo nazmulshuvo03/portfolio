@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Education({ id }) {
+export default function About({ id }) {
     return (
         <div className="education" id={id}>
             <div className="education_title text-center">
@@ -27,7 +27,7 @@ export default function Education({ id }) {
                         <div className="card-footer">
                             <a
                                 href="https://www.coursera.org/account/accomplishments/certificate/64XFYX4W2646"
-                                className="btn btn-primary"
+                                className="btn btn-outline-primary"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -50,7 +50,7 @@ export default function Education({ id }) {
                         <div className="card-footer">
                             <a
                                 href="https://www.coursera.org/account/accomplishments/certificate/55ZQB9AFLLQL"
-                                className="btn btn-primary"
+                                className="btn btn-outline-primary"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

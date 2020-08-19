@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     --off-white: #fafafa;
+    font-family: "Open Sans", sans-serif;
 }
 
 .left_section,
@@ -28,12 +29,13 @@ body {
 }
 
 /************ Navarea ***********/
-.navarea {
-    background-color: var(--off-white);
+.navbar {
     z-index: 1000;
     box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
-    width: auto;
-    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: #fff;
+    padding: 1rem;
 }
 
 .nav_content {
@@ -47,22 +49,37 @@ body {
     position: fixed;
 }
 
+.navbar-toggler:focus {
+    outline: none;
+}
+
 .nav_items {
     position: -webkit-sticky;
     position: sticky;
 }
 
 .section_name {
+    padding: 0 0.5rem;
+}
+
+.section_name > a {
     display: block;
-    color: #333;
+    color: #007bff;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #fff;
+    border-radius: 0.2rem;
+    width: 6rem;
+    text-align: center;
 }
 
 .section_name > .active {
-    border-bottom: 0.1rem solid #333;
+    border: 1px solid #007bff;
 }
 
-.section_name:hover {
-    color: black;
+.section_name > a:hover {
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
     cursor: pointer;
 }
 
@@ -70,11 +87,26 @@ body {
 .intro {
     display: block;
     width: auto;
-    height: 40rem;
+    height: 60rem;
     background-image: url("https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 
+.name {
+    font-family: "Playfair Display", serif;
+    font-size: 5rem;
+}
+
+.title {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
 /*********** Projects *************/
+.projects {
+    height: 60rem;
+}
+
 .projects_title {
     font-size: 4rem;
     padding: 2rem;
@@ -82,7 +114,7 @@ body {
 
 /********* Education **************/
 .education {
-    padding-top: 2rem;
+    height: 60rem;
 }
 
 .education_title {
@@ -117,6 +149,7 @@ body {
     padding-top: 4rem;
     padding-bottom: 2rem;
     padding-left: 2rem;
+    height: 60rem;
 }
 
 .contacts_title {
@@ -157,4 +190,6 @@ body {
 
 .scroll_top_button {
     font-size: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
 }

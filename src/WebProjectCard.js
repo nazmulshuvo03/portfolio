@@ -17,29 +17,25 @@ function WebProjectCard({ card }) {
             <div className="card-footer">
                 <small className="text-muted">{card.technologies}</small>
             </div>
-            <div className="card-footer">
-                <div className="row">
-                    <div className="col-sm-6">
-                        <a
-                            href={card.visit_link}
-                            className="btn btn-primary"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Visit
-                        </a>
-                    </div>
-                    <div className="col-sm-6">
-                        <a
-                            href={card.source_link}
-                            className="btn btn-primary"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Source
-                        </a>
-                    </div>
-                </div>
+            <div style={{ width: "100%", padding: "0.5rem" }}>
+                <a
+                    href={card.visit_link}
+                    className="btn btn-outline-primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ width: "45%", marginRight: "15px" }}
+                >
+                    Visit
+                </a>
+                <a
+                    href={card.source_link}
+                    className="btn btn-outline-primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ width: "45%", marginLeft: "15px" }}
+                >
+                    Source
+                </a>
             </div>
         </div>
     );

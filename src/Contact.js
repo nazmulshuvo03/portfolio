@@ -6,7 +6,7 @@ export default function Contact({ id }) {
     return (
         <div className="contact" id={id}>
             <div className="contacts_title text-center">
-                <i className="far fa-address-book"></i> Contacts
+                <i className="far fa-address-book"></i> Contact
             </div>
             <div className="row">
                 <div className="col-sm-6">
@@ -65,7 +65,7 @@ export default function Contact({ id }) {
                     onClick={() => {
                         animateScroll.scrollToTop();
                     }}
-                    className="btn btn-dark rounded-circle shadow-lg scroll_top_button"
+                    className="btn btn-outline-primary shadow-lg scroll_top_button"
                     data-toggle="tooltip"
                     data-placement="bottom"
                     title="Go To Top"
