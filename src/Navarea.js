@@ -27,7 +27,7 @@ export default function Navarea() {
                         <ScrollLink to={"projects"} name={"Projects"} />
                     </li>
                     <li className="section_name">
-                        <ScrollLink to={"education"} name={"Education"} />
+                        <ScrollLink to={"about"} name={"About"} />
                     </li>
                     <li className="section_name">
                         <ScrollLink to={"contacts"} name={"Contact"} />

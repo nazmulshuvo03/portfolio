@@ -1,8 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    --off-white: #fafafa;
     font-family: "Open Sans", sans-serif;
+    color: #212121;
 }
 
 .left_section,
@@ -87,7 +87,7 @@ body {
 .intro {
     display: block;
     width: auto;
-    height: 60rem;
+    min-height: 60rem;
     background-image: url("https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 
@@ -104,7 +104,7 @@ body {
 
 /*********** Projects *************/
 .projects {
-    height: 60rem;
+    min-height: 60rem;
 }
 
 .projects_title {
@@ -112,36 +112,28 @@ body {
     padding: 2rem;
 }
 
+/*********** About *************/
+.about {
+    min-height: 60rem;
+}
+
+/*********** Experience *************/
+.experience {
+    min-height: 60rem;
+}
+
+.company_name:hover {
+    text-decoration: none;
+}
+
 /********* Education **************/
 .education {
-    height: 60rem;
-}
-
-.education_title {
-    font-size: 4rem;
-    padding: 1rem;
-}
-
-.university_degree {
-    padding: 2rem;
-}
-
-.versity_dept {
-    font-size: 2rem;
-}
-
-.versity_name {
-    font-size: 1.7rem;
-    font-weight: bold;
-}
-
-.versity_area {
-    font-size: 1.5rem;
+    min-height: 60rem;
 }
 
 .online_degree_title {
     font-size: 2.5rem;
-    padding: 1rem;
+    padding: 2rem 0 0;
 }
 
 /******** Contacts *********/
@@ -149,7 +141,7 @@ body {
     padding-top: 4rem;
     padding-bottom: 2rem;
     padding-left: 2rem;
-    height: 60rem;
+    min-height: 60rem;
 }
 
 .contacts_title {
