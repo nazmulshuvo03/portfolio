@@ -61,7 +61,7 @@ body {
 .section_name {
     padding: 0 0.5rem;
 }
-
+/* 
 .section_name > a {
     display: block;
     color: #007bff;
@@ -81,14 +81,14 @@ body {
     background-color: #007bff;
     border: 1px solid #007bff;
     cursor: pointer;
-}
+} */
 
 /************ Intro ****************/
 .intro {
     display: block;
     width: auto;
     min-height: 60rem;
-    background-image: url("https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background: url("https://ak.picdn.net/shutterstock/videos/1025765069/preview/stock-footage-plexus-of-abstract-lines-triangles-and-dots-technologies.webm");
 }
 
 .name {
@@ -102,9 +102,60 @@ body {
     margin-bottom: 2rem;
 }
 
+header {
+    position: relative;
+    background-color: #fff;
+    height: 100vh;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+    position: relative;
+    z-index: 2;
+}
+
+header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+    header {
+        background: url("https://source.unsplash.com/XT5OInaElMw/1600x900")
+            black no-repeat center center scroll;
+    }
+    header video {
+        display: none;
+    }
+}
+
 /*********** Projects *************/
 .projects {
     min-height: 60rem;
+    padding: 5rem;
 }
 
 .projects_title {
@@ -115,6 +166,7 @@ body {
 /*********** About *************/
 .about {
     min-height: 60rem;
+    padding: 5rem;
 }
 
 /*********** Experience *************/
@@ -138,9 +190,7 @@ body {
 
 /******** Contacts *********/
 .contact {
-    padding-top: 4rem;
-    padding-bottom: 2rem;
-    padding-left: 2rem;
+    padding: 5rem;
     min-height: 60rem;
 }
 
@@ -173,15 +223,4 @@ body {
     background-color: var(--off-white);
     padding-right: 1.2rem;
     position: static;
-}
-
-.scroll_top_section {
-    padding-top: 6rem;
-    padding-bottom: 4rem;
-}
-
-.scroll_top_button {
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
-    border-radius: 50%;
 }

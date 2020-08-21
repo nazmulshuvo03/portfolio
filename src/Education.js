@@ -32,7 +32,7 @@ export default function Education() {
                 <div
                     className="shadow"
                     style={{
-                        width: "32rem",
+                        width: "100%",
                         border: "1px solid rgba(0,0,0,.125)",
                         padding: "1rem",
                         margin: "1rem 0",
@@ -63,7 +63,7 @@ export default function Education() {
                 <div
                     className="shadow"
                     style={{
-                        width: "32rem",
+                        width: "100%",
                         border: "1px solid rgba(0,0,0,.125)",
                         padding: "1rem",
                         margin: "1rem 0",
@@ -94,7 +94,7 @@ export default function Education() {
                 <div
                     className="shadow"
                     style={{
-                        width: "32rem",
+                        width: "100%",
                         border: "1px solid rgba(0,0,0,.125)",
                         padding: "1rem",
                         margin: "1rem 0",

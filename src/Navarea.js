@@ -3,8 +3,21 @@ import React from "react";
 import ScrollLink from "./ScrollLink";
 
 export default function Navarea() {
+    const [view, setView] = React.useState("none");
+
+    React.useEffect(() => {
+        window.onscroll = () => {
+            console.log(document.documentElement.scrollTop);
+            if (document.documentElement.scrollTop > 100) {
+                setView("inline-block");
+            } else setView("none");
+        };
+    }, [window.scrollY]);
     return (
-        <nav class="navbar navbar-expand-lg">
+        <nav
+            class="navbar navbar-expand-lg navbar-light"
+            style={{ display: `${view}` }}
+        >
             <button
                 class="navbar-toggler"
                 type="button"

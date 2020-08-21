@@ -6,11 +6,11 @@ import Experience from "./Experience";
 export default function About({ id }) {
     return (
         <div className="about" id={id}>
-            <div className="row" style={{ width: "80rem" }}>
-                <div className="col">
+            <div className="row">
+                <div className="col-12 col-md-6">
                     <Experience />
                 </div>
-                <div className="col">
+                <div className="col-12 col-md-5 offset-md-1">
                     <Education />
                 </div>
             </div>

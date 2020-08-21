@@ -13,6 +13,7 @@ function ScrollLink({ to, name }) {
             offset={-70}
             delay={500}
             duration={1000}
+            className="btn btn-outline-primary"
         >
             {name}
         </Link>

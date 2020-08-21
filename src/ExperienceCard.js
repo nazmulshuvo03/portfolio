@@ -4,7 +4,7 @@ export default function ExperienceCard(props) {
     return (
         <div
             style={{
-                width: "35rem",
+                width: "100%",
                 border: "1px solid rgba(0,0,0,.125)",
                 margin: "1rem 0",
                 padding: "1rem",
