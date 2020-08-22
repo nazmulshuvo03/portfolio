@@ -41,7 +41,7 @@ export default function Intro({ id }) {
                             <a
                                 type="button"
                                 className="btn btn-outline-secondary btn-lg mb-auto shadow"
-                                href="https://github.com/nazmulshuvo03/Resume/raw/master/Nazmul_Alom.pdf"
+                                href="https://github.com/nazmulshuvo03/Resume/raw/master/Nazmul%20Alom.pdf"
                             >
                                 Download Resume
                             </a>
