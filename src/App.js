@@ -13,7 +13,7 @@ function App() {
             setDevice("sm");
         } else setDevice("lg");
         // console.log(window);
-    }, [window.innerWidth]);
+    }, []);
     return (
         <div className="resume">
             <Navarea device={device} />

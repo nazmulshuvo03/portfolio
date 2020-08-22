@@ -26,6 +26,7 @@ export default function ExperienceCard(props) {
                 href={props.url}
                 className="company_name"
                 target="_blank"
+                rel="noopener noreferrer"
                 style={{
                     color: "#212121",
                     fontSize: "1.25rem",
