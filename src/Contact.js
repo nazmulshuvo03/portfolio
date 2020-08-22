@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
+
 import { animateScroll } from "react-scroll";
-import emailjs from "emailjs-com";
+
 
 export default function Contact({ id }) {
     const [state, setState] = React.useState({
@@ -32,12 +32,12 @@ export default function Contact({ id }) {
 
     const onChange = (event) => {
         setState({ ...state, [event.target.id]: event.target.value });
-        console.log(state);
+        // console.log(state);
     };
 
     const formSubmit = (e) => {
         e.preventDefault();
-        console.log(state);
+        // console.log(state);
         const templateId = "template_I2impR4I";
         sendFeedback(templateId, state);
     };

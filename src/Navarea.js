@@ -7,12 +7,12 @@ export default function Navarea() {
 
     React.useEffect(() => {
         window.onscroll = () => {
-            console.log(document.documentElement.scrollTop);
+            // console.log(document.documentElement.scrollTop);
             if (document.documentElement.scrollTop > 100) {
                 setView("inline-block");
             } else setView("none");
         };
-    }, [window.scrollY]);
+    }, []);
     return (
         <nav
             class="navbar navbar-expand-lg navbar-light"
