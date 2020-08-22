@@ -1,8 +1,12 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Cabin Sketch", cursive; */
+    /* font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; */
     color: #212121;
+    font-weight: 300;
+    background-color: rgba(242, 242, 242, 0.2);
 }
 
 .left_section,
@@ -87,7 +91,6 @@ body {
 .intro {
     display: block;
     width: auto;
-    min-height: 60rem;
     background: url("https://ak.picdn.net/shutterstock/videos/1025765069/preview/stock-footage-plexus-of-abstract-lines-triangles-and-dots-technologies.webm");
 }
 
@@ -142,7 +145,7 @@ header .overlay {
     z-index: 1;
 }
 
-@media (pointer: coarse) and (hover: none) {
+/* @media (pointer: coarse) and (hover: none) {
     header {
         background: url("https://source.unsplash.com/XT5OInaElMw/1600x900")
             black no-repeat center center scroll;
@@ -150,24 +153,11 @@ header .overlay {
     header video {
         display: none;
     }
-}
+} */
 
 /*********** Projects *************/
-.projects {
-    min-height: 60rem;
-    padding: 5rem;
-}
-
-.projects_title {
-    font-size: 4rem;
-    padding: 2rem;
-}
 
 /*********** About *************/
-.about {
-    min-height: 60rem;
-    padding: 5rem;
-}
 
 /*********** Experience *************/
 .experience {
@@ -179,21 +169,8 @@ header .overlay {
 }
 
 /********* Education **************/
-.education {
-    min-height: 60rem;
-}
-
-.online_degree_title {
-    font-size: 2.5rem;
-    padding: 2rem 0 0;
-}
 
 /******** Contacts *********/
-.contact {
-    padding: 5rem;
-    min-height: 60rem;
-}
-
 .contacts_title {
     font-size: 4rem;
     padding: 1rem;
@@ -205,6 +182,7 @@ header .overlay {
 
 .contact_font {
     font-size: 1.2rem;
+    font-weight: 400;
 }
 
 .contact_icon {

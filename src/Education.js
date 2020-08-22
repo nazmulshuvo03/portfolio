@@ -3,15 +3,15 @@ import React from "react";
 // import coursera from "./Image/coursera.png";
 import deeplearning from "./Image/deeplearning.png";
 
-export default function Education() {
+export default function Education({ device }) {
     return (
-        <div className="education">
+        <div style={{ minHeight: "100vh" }}>
             <div
                 style={{
-                    fontSize: "4rem",
-                    padding: "1rem",
-                    marginLeft: "3rem",
-                    margin: "0 auto",
+                    fontSize: `${device === "sm" ? "3rem" : "4rem"}`,
+                    padding: "2rem 0 1rem",
+                    marginLeft: `${device === "sm" ? "0rem" : "3rem"}`,
+                    fontWeight: "700",
                 }}
             >
                 <i className="fas fa-university"></i> Education
@@ -28,14 +28,22 @@ export default function Education() {
                         Barisal, Bangladesh
                     </div>
                 </div>
-                <div className="online_degree_title">Online Certifications</div>
+                <div
+                    style={{
+                        fontSize: `${device === "sm" ? "1.5rem" : "2.5rem"}`,
+                        padding: "2rem 0 0rem",
+                    }}
+                >
+                    Online Certifications
+                </div>
                 <div
                     className="shadow"
                     style={{
                         width: "100%",
-                        border: "1px solid rgba(0,0,0,.125)",
+                        border: "2px solid #333",
                         padding: "1rem",
                         margin: "1rem 0",
+                        borderRadius: "5px 5px 5px 5px/25px 25px 25px 5px",
                     }}
                 >
                     <h5 className="card-title">
@@ -64,9 +72,10 @@ export default function Education() {
                     className="shadow"
                     style={{
                         width: "100%",
-                        border: "1px solid rgba(0,0,0,.125)",
+                        border: "2px solid #333",
                         padding: "1rem",
                         margin: "1rem 0",
+                        borderRadius: "5px 5px 5px 5px/25px 25px 25px 5px",
                     }}
                 >
                     <h5 className="card-title">
@@ -95,9 +104,10 @@ export default function Education() {
                     className="shadow"
                     style={{
                         width: "100%",
-                        border: "1px solid rgba(0,0,0,.125)",
+                        border: "2px solid #333",
                         padding: "1rem",
                         margin: "1rem 0",
+                        borderRadius: "5px 5px 5px 5px/25px 25px 25px 5px",
                     }}
                 >
                     <h5 className="card-title">LICT Top-up IT Training</h5>

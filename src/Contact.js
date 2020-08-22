@@ -2,8 +2,7 @@ import React from "react";
 
 import { animateScroll } from "react-scroll";
 
-
-export default function Contact({ id }) {
+export default function Contact({ id, device }) {
     const [state, setState] = React.useState({
         name: "",
         email: "",
@@ -43,7 +42,14 @@ export default function Contact({ id }) {
     };
 
     return (
-        <div className="contact" id={id}>
+        <div
+            style={{
+                minHeight: "100vh",
+                padding: `${device === "sm" ? "0 1rem" : "0 5rem"}`,
+                fontWeight: "700",
+            }}
+            id={id}
+        >
             <div className="contacts_title text-center">
                 <i className="far fa-address-book"></i> Contact
             </div>
@@ -61,7 +67,7 @@ export default function Contact({ id }) {
                     method="POST"
                 >
                     <div className="row">
-                        <div className="col pl-0">
+                        <div className="col-12 col-md-6 pl-0">
                             <div className="form-group">
                                 <label for="name">Name</label>
                                 <input
@@ -73,7 +79,7 @@ export default function Contact({ id }) {
                                 />
                             </div>
                         </div>
-                        <div className="col pr-0">
+                        <div className="col-12 col-md-6 pr-0">
                             <div className="form-group">
                                 <label for="email">Email address</label>
                                 <input
@@ -122,7 +128,14 @@ export default function Contact({ id }) {
                     </div>
                 </div>
                 <div className="col-12 col-md-4 offset-md-2">
-                    <div className="social_links_title">Connect</div>
+                    <div
+                        className="social_links_title"
+                        style={{
+                            padding: `${device === "sm" ? "2rem 0 0" : "0"}`,
+                        }}
+                    >
+                        Connect
+                    </div>
                     <div className="social_links">
                         <a
                             href="https://www.linkedin.com/in/nazmul-alom"

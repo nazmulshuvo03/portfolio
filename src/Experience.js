@@ -2,14 +2,15 @@ import React from "react";
 
 import ExperienceCard from "./ExperienceCard";
 
-export default function Experience({ id }) {
+export default function Experience({ device }) {
     return (
-        <div className="experience" id={id}>
+        <div style={{ minHeight: "100vh" }}>
             <div
                 style={{
-                    fontSize: "4rem",
-                    padding: "1rem",
-                    marginLeft: "3rem",
+                    fontSize: `${device === "sm" ? "3rem" : "4rem"}`,
+                    padding: "2rem 0 1rem",
+                    marginLeft: `${device === "sm" ? "0rem" : "3rem"}`,
+                    fontWeight: "700",
                 }}
             >
                 <i className="fas fa-laptop-code"></i> Experience

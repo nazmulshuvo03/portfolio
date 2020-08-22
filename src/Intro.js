@@ -40,8 +40,8 @@ export default function Intro({ id }) {
                             <p class="lead mb-3">Front End Web Developer</p>
                             <a
                                 type="button"
-                                className="btn btn-outline-secondary mb-auto shadow"
-                                href="https://github.com/nazmulshuvo03/Resume/raw/master/Nazmul%20Alom.pdf"
+                                className="btn btn-outline-secondary btn-lg mb-auto shadow"
+                                href="https://github.com/nazmulshuvo03/Resume/raw/master/Nazmul_Alom.pdf"
                             >
                                 Download Resume
                             </a>

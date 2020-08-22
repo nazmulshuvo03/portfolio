@@ -2,7 +2,7 @@ import React from "react";
 
 import ImageSlider from "./ImageSlider";
 
-function WebProjectCard({ card }) {
+function WebProjectCard({ card, device }) {
     return (
         <div className="card h-100 shadow-lg">
             <ImageSlider
@@ -23,7 +23,10 @@ function WebProjectCard({ card }) {
                     className="btn btn-outline-primary"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ width: "45%", marginRight: "15px" }}
+                    style={{
+                        width: "45%",
+                        marginRight: `${device === "sm" ? "0" : "15px"}`,
+                    }}
                 >
                     Visit
                 </a>

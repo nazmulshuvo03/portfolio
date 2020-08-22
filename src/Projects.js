@@ -23,7 +23,7 @@ import mojarStore03 from "./Image/mojarStore03.png";
 import mojarStore04 from "./Image/mojarStore04.png";
 import mojarStore05 from "./Image/mojarStore05.png";
 
-function Projects({ id }) {
+function Projects({ id, device }) {
     var movieReviewCard = {
         images: [
             movieReview01,
@@ -33,14 +33,14 @@ function Projects({ id }) {
             movieReview05,
             movieReview06,
             movieReview07,
-            movieReview08
+            movieReview08,
         ],
         title: "Movie Review",
         description:
             "This is a website where anyone can sign up and post the reviews of the movies they have watched. The whole website is created using React. Redux is used here to manage data flow. The backend, along with database, is handled with Firebase. Firebase notification function  is used here to get the user notified about recent activities. User can search reviews here in the dashboard. There is another search facility, where user can search movies from MovieDB database and use the name and poster from their database.",
         technologies: "React, Redux, Firebase",
         visit_link: "https://movie-review-03.netlify.com",
-        source_link: "https://github.com/nazmulshuvo03/Movie_Review"
+        source_link: "https://github.com/nazmulshuvo03/Movie_Review",
     };
 
     var gameRankingCard = {
@@ -49,14 +49,14 @@ function Projects({ id }) {
             gameRanking02,
             gameRanking03,
             gameRanking04,
-            gameRanking05
+            gameRanking05,
         ],
         title: "Game Ranking System",
         description:
             "Foosball is an indoor game. People can play it in their office or in a club. This game can be played one vs one, two vs two or even one vs two players. If they need to rank their players and keep their winning records, they can use this web app. This app can keep their game records and visualize it with beautiful progressbars. This app is built with React. And data flow is managed by Redux.",
         technologies: "React, Redux",
         visit_link: "https://game-ranking-system.netlify.com",
-        source_link: "https://github.com/nazmulshuvo03/Game_Ranking_System"
+        source_link: "https://github.com/nazmulshuvo03/Game_Ranking_System",
     };
 
     var mojarStoreCard = {
@@ -65,30 +65,43 @@ function Projects({ id }) {
             mojarStore02,
             mojarStore03,
             mojarStore04,
-            mojarStore05
+            mojarStore05,
         ],
         title: "Mojar Store",
         description:
             "This is an online shopping store, built with React. Here users can add their favourite items into a cart and remove them if necessary. When the shopping is done, they can checkout using Paypal. Data flow is managed here with React Context.",
         technologies: "React, React Context",
         visit_link: "https://mojar-store.netlify.com",
-        source_link: "https://github.com/nazmulshuvo03/Mojar-Strore"
+        source_link: "https://github.com/nazmulshuvo03/Mojar-Strore",
     };
 
     return (
-        <div className="projects" id={id}>
-            <div className="projects_title text-center">
+        <div
+            style={{
+                minHeight: "100vh",
+                padding: `${device === "sm" ? "0 1rem" : "0 5rem"}`,
+            }}
+            id={id}
+        >
+            <div
+                style={{
+                    fontSize: `${device === "sm" ? "3rem" : "4rem"}`,
+                    padding: "2rem 0 3rem",
+                    fontWeight: "700",
+                }}
+                className="text-center"
+            >
                 <i className="fas fa-tasks"></i> Projects
             </div>
             <div className="row row-cols-1 row-cols-md-3">
                 <div className="col mb-4">
-                    <WebProjectCard card={movieReviewCard} />
+                    <WebProjectCard device={device} card={movieReviewCard} />
                 </div>
                 <div className="col mb-4">
-                    <WebProjectCard card={gameRankingCard} />
+                    <WebProjectCard device={device} card={gameRankingCard} />
                 </div>
                 <div className="col mb-4">
-                    <WebProjectCard card={mojarStoreCard} />
+                    <WebProjectCard device={device} card={mojarStoreCard} />
                 </div>
             </div>
         </div>

@@ -7,13 +7,20 @@ import Contact from "./Contact";
 import About from "./About";
 
 function App() {
+    const [device, setDevice] = React.useState("lg");
+    React.useEffect(() => {
+        if (window.innerWidth < 989) {
+            setDevice("sm");
+        } else setDevice("lg");
+        // console.log(window);
+    }, [window.innerWidth]);
     return (
         <div className="resume">
-            <Navarea />
-            <Intro id="intro" />
-            <Projects id="projects" />
-            <About id="about" />
-            <Contact id="contacts" />
+            <Navarea device={device} />
+            <Intro device={device} id="intro" />
+            <Projects device={device} id="projects" />
+            <About device={device} id="about" />
+            <Contact device={device} id="contacts" />
         </div>
     );
 }
