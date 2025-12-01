@@ -23,16 +23,155 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, children }) => {
   };
 
   return (
-    <div className="my-6 group">
-      {/* Controls outside the box, right aligned */}
-      <div className="flex items-center justify-end gap-2 mb-1.5 px-1">
-        <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
-          {language}
-        </span>
+    <div style={{ margin: "24px 0" }}>
+      {/* Header Bar with Controls */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "12px 20px",
+          backgroundColor: "#1e2230",
+          borderTopLeftRadius: "8px",
+          borderTopRightRadius: "8px",
+          borderLeft: "1px solid #3d4254",
+          borderRight: "1px solid #3d4254",
+          borderTop: "1px solid #3d4254",
+          borderBottom: "1px solid #2d3142",
+          minHeight: "48px",
+        }}
+      >
+        {/* Left side: macOS dots + Language Label */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
+          {/* macOS Window Buttons Container */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            <div
+              style={{
+                width: "12px",
+                height: "12px",
+                borderRadius: "50%",
+                backgroundColor: "#ff5f56",
+                boxShadow:
+                  "0 0 12px rgba(255, 95, 86, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.3)",
+                border: "0.5px solid rgba(0, 0, 0, 0.2)",
+              }}
+            />
+            <div
+              style={{
+                width: "12px",
+                height: "12px",
+                borderRadius: "50%",
+                backgroundColor: "#ffbd2e",
+                boxShadow:
+                  "0 0 12px rgba(255, 189, 46, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.3)",
+                border: "0.5px solid rgba(0, 0, 0, 0.2)",
+              }}
+            />
+            <div
+              style={{
+                width: "12px",
+                height: "12px",
+                borderRadius: "50%",
+                backgroundColor: "#27c93f",
+                boxShadow:
+                  "0 0 12px rgba(39, 201, 63, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.3)",
+                border: "0.5px solid rgba(0, 0, 0, 0.2)",
+              }}
+            />
+          </div>
+
+          {/* Divider */}
+          <div
+            style={{
+              width: "1px",
+              height: "20px",
+              backgroundColor: "#4a5066",
+              marginLeft: "4px",
+              marginRight: "4px",
+            }}
+          />
+
+          {/* Language Label */}
+          <span
+            style={{
+              fontSize: "0.875rem",
+              fontFamily: "monospace",
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              color: "#9ca3ff",
+              letterSpacing: "0.12em",
+              textShadow: "0 0 8px rgba(156, 163, 255, 0.4)",
+              userSelect: "none",
+            }}
+          >
+            {language}
+          </span>
+        </div>
+
+        {/* Copy Button */}
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1.5 px-2 py-1 text-xs text-zinc-400 hover:text-white transition-colors rounded hover:bg-white/10"
-          title="Copy code"
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "8px",
+            padding: "6px 12px",
+            fontSize: "0.75rem",
+            fontWeight: "600",
+            color: isCopied ? "#10b981" : "#e5e7eb",
+            backgroundColor: isCopied
+              ? "rgba(16, 185, 129, 0.15)"
+              : "rgba(255, 255, 255, 0.05)",
+            border: isCopied
+              ? "1px solid rgba(16, 185, 129, 0.5)"
+              : "1px solid rgba(255, 255, 255, 0.1)",
+            borderRadius: "6px",
+            boxShadow: isCopied ? "0 0 20px rgba(16, 185, 129, 0.3)" : "none",
+            cursor: "pointer",
+            transition: "all 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            if (!isCopied) {
+              e.currentTarget.style.backgroundColor =
+                "rgba(255, 255, 255, 0.1)";
+              e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.2)";
+              e.currentTarget.style.transform = "scale(1.05)";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (!isCopied) {
+              e.currentTarget.style.backgroundColor =
+                "rgba(255, 255, 255, 0.05)";
+              e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+              e.currentTarget.style.transform = "scale(1)";
+            }
+          }}
+          onMouseDown={(e) => {
+            e.currentTarget.style.transform = "scale(0.95)";
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.transform = isCopied
+              ? "scale(1)"
+              : "scale(1.05)";
+          }}
+          title={isCopied ? "Copied!" : "Copy code to clipboard"}
+          aria-label={isCopied ? "Code copied" : "Copy code"}
         >
           {isCopied ? (
             <>
@@ -43,14 +182,13 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, children }) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-green-500"
               >
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
-              <span className="text-green-500">Copied!</span>
+              <span>Copied!</span>
             </>
           ) : (
             <>
@@ -76,8 +214,16 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, children }) => {
 
       {/* Code Box */}
       <div
-        className="rounded-md overflow-hidden border border-[var(--border-color)]"
-        style={{ backgroundColor: "#111" }}
+        style={{
+          backgroundColor: "#0d1117",
+          borderLeft: "1px solid #2d3142",
+          borderRight: "1px solid #2d3142",
+          borderBottom: "1px solid #2d3142",
+          borderBottomLeftRadius: "8px",
+          borderBottomRightRadius: "8px",
+          overflow: "hidden",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
+        }}
       >
         <SyntaxHighlighter
           style={vscDarkPlus as any}
@@ -88,7 +234,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ language, children }) => {
             padding: "20px",
             backgroundColor: "transparent",
             fontSize: "0.9rem",
-            lineHeight: "1.5",
+            lineHeight: "1.6",
           }}
         >
           {children}
