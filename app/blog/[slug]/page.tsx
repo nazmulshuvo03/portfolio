@@ -6,6 +6,8 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import Mermaid from "@/app/components/Mermaid";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -216,9 +218,33 @@ export default async function BlogPostPage({
                   }
 
                   return match ? (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
+                    <div className="relative group my-5">
+                      <div
+                        className="absolute top-0 right-0 px-3 py-1 text-xs text-zinc-500 font-mono select-none uppercase"
+                        style={{
+                          background: "rgba(0,0,0,0.3)",
+                          borderBottomLeftRadius: "4px",
+                          zIndex: 10,
+                        }}
+                      >
+                        {match[1]}
+                      </div>
+                      <SyntaxHighlighter
+                        style={vscDarkPlus}
+                        language={match[1]}
+                        PreTag="div"
+                        customStyle={{
+                          margin: 0,
+                          borderRadius: "5px",
+                          padding: "20px",
+                          backgroundColor: "#111",
+                          border: "1px solid var(--border-color)",
+                        }}
+                        {...props}
+                      >
+                        {String(children).replace(/\n$/, "")}
+                      </SyntaxHighlighter>
+                    </div>
                   ) : (
                     <code
                       style={{
@@ -238,12 +264,10 @@ export default async function BlogPostPage({
                 pre: ({ node, ...props }) => (
                   <pre
                     style={{
-                      backgroundColor: "#111",
-                      padding: "20px",
-                      borderRadius: "5px",
-                      overflowX: "auto",
-                      marginBottom: "20px",
-                      border: "1px solid var(--border-color)",
+                      background: "transparent",
+                      padding: 0,
+                      margin: 0,
+                      overflow: "visible",
                     }}
                     {...props}
                   />
