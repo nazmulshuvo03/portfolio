@@ -1013,6 +1013,11 @@ ul {
   background-position: right 10px center;
 }
 
+.sidebar-select option {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+}
+
 @media (max-width: 900px) {
   .blog-container {
     grid-template-columns: 1fr;

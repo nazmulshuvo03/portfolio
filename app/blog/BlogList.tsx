@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
 
 interface Category {
   id: number;
@@ -11,6 +12,13 @@ interface Category {
   count?: number;
 }
 
+interface Tag {
+  id: number;
+  documentId: string;
+  name: string;
+  slug: string;
+}
+
 interface Post {
   id: number;
   documentId: string;
@@ -18,7 +26,8 @@ interface Post {
   slug: string;
   description: string;
   publishedAt: string;
-  category?: Category;
+  categories?: Category[];
+  tags?: Tag[];
 }
 
 interface BlogListProps {
@@ -27,15 +36,22 @@ interface BlogListProps {
 }
 
 export default function BlogList({ posts, categories }: BlogListProps) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState("default");
+
+  // Initialize search from URL if present
+  const categoryFilter = searchParams.get("category");
 
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     posts.forEach((post) => {
-      const catName = post.category?.name;
-      if (catName) {
-        counts[catName] = (counts[catName] || 0) + 1;
+      if (post.categories && post.categories.length > 0) {
+        post.categories.forEach((cat) => {
+          counts[cat.name] = (counts[cat.name] || 0) + 1;
+        });
       }
     });
     return counts;
@@ -44,20 +60,34 @@ export default function BlogList({ posts, categories }: BlogListProps) {
   const filteredAndSortedPosts = useMemo(() => {
     let result = [...posts];
 
+    // Filter by Category (URL param)
+    if (categoryFilter) {
+      result = result.filter((post) =>
+        post.categories?.some((cat) => cat.slug === categoryFilter)
+      );
+    }
+
+    // Filter by Search Query
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       result = result.filter((post) => {
         const title = post.title?.toLowerCase() || "";
         const description = post.description?.toLowerCase() || "";
-        const category = post.category?.name?.toLowerCase() || "";
+        const catNames =
+          post.categories?.map((c) => c.name.toLowerCase()).join(" ") || "";
+        const tagNames =
+          post.tags?.map((t) => t.name.toLowerCase()).join(" ") || "";
+
         return (
           title.includes(query) ||
           description.includes(query) ||
-          category.includes(query)
+          catNames.includes(query) ||
+          tagNames.includes(query)
         );
       });
     }
 
+    // Sort
     result.sort((a, b) => {
       const dateA = new Date(a.publishedAt).getTime();
       const dateB = new Date(b.publishedAt).getTime();
@@ -78,7 +108,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
     });
 
     return result;
-  }, [posts, searchQuery, sortOption]);
+  }, [posts, searchQuery, sortOption, categoryFilter]);
 
   return (
     <div className="blog-container">
@@ -117,15 +147,23 @@ export default function BlogList({ posts, categories }: BlogListProps) {
         <div>
           <h3 className="sidebar-title">// Categories</h3>
           <nav>
+            <Link
+              href="/blog"
+              className={`category-link ${
+                !categoryFilter ? "text-[var(--accent-color)]" : ""
+              }`}
+            >
+              All Posts
+            </Link>
             {categories.map((cat) => (
               <Link
                 key={cat.id}
                 href={`/blog?category=${cat.slug}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setSearchQuery(cat.name);
-                }}
-                className="category-link"
+                className={`category-link ${
+                  categoryFilter === cat.slug
+                    ? "text-[var(--accent-color)] pl-[5px]"
+                    : ""
+                }`}
               >
                 {cat.name}
                 <span className="category-count">
@@ -159,9 +197,9 @@ export default function BlogList({ posts, categories }: BlogListProps) {
                 <span style={{ color: "var(--accent-color)" }}>
                   {new Date(post.publishedAt).toISOString().split("T")[0]}
                 </span>
-                {post.category && (
+                {post.categories && post.categories.length > 0 && (
                   <span style={{ marginLeft: "10px" }}>
-                    // {post.category.name}
+                    // {post.categories.map((c) => c.name).join(", ")}
                   </span>
                 )}
               </div>
@@ -172,6 +210,14 @@ export default function BlogList({ posts, categories }: BlogListProps) {
               >
                 {post.description}
               </p>
+
+              {post.tags && post.tags.length > 0 && (
+                <div className="tags-list" style={{ marginBottom: "20px" }}>
+                  {post.tags.map((tag) => (
+                    <span key={tag.id}>#{tag.name}</span>
+                  ))}
+                </div>
+              )}
 
               <Link
                 href={`/blog/${post.slug}`}

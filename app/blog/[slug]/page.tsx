@@ -53,12 +53,28 @@ export default async function BlogPostPage({
               <span className="date">
                 {new Date(post.publishedAt).toISOString().split("T")[0]}
               </span>
-              {post.category && (
+              {post.categories && post.categories.length > 0 && (
                 <span className="categories">
                   //{" "}
-                  <Link href={`/blog?category=${post.category.slug}`}>
-                    {post.category.name}
-                  </Link>
+                  {post.categories.map((cat: any, index: number) => (
+                    <span key={cat.id}>
+                      {index > 0 && ", "}
+                      <Link href={`/blog?category=${cat.slug}`}>
+                        {cat.name}
+                      </Link>
+                    </span>
+                  ))}
+                </span>
+              )}
+              {post.tags && post.tags.length > 0 && (
+                <span className="tags" style={{ marginLeft: "20px" }}>
+                  [{" "}
+                  {post.tags.map((tag: any) => (
+                    <span key={tag.id} style={{ marginRight: "5px" }}>
+                      #{tag.name}
+                    </span>
+                  ))}{" "}
+                  ]
                 </span>
               )}
             </div>
