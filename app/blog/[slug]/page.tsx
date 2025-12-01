@@ -2,6 +2,9 @@ import { getPostBySlug, STRAPI_URL } from "@/lib/strapi";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -116,7 +119,8 @@ export default async function BlogPostPage({
 
           <div className="post-content" style={{ marginTop: "50px" }}>
             <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
+              remarkPlugins={[remarkGfm, remarkMath]}
+              rehypePlugins={[rehypeKatex]}
               components={{
                 h1: ({ node, ...props }) => (
                   <h1
