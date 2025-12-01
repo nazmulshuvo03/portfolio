@@ -44,6 +44,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
 
   // Initialize search from URL if present
   const categoryFilter = searchParams.get("category");
+  const tagFilter = searchParams.get("tag");
 
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -64,6 +65,13 @@ export default function BlogList({ posts, categories }: BlogListProps) {
     if (categoryFilter) {
       result = result.filter((post) =>
         post.categories?.some((cat) => cat.slug === categoryFilter)
+      );
+    }
+
+    // Filter by Tag (URL param)
+    if (tagFilter) {
+      result = result.filter((post) =>
+        post.tags?.some((tag) => tag.slug === tagFilter)
       );
     }
 
@@ -108,7 +116,7 @@ export default function BlogList({ posts, categories }: BlogListProps) {
     });
 
     return result;
-  }, [posts, searchQuery, sortOption, categoryFilter]);
+  }, [posts, searchQuery, sortOption, categoryFilter, tagFilter]);
 
   return (
     <div className="blog-container">
@@ -214,7 +222,17 @@ export default function BlogList({ posts, categories }: BlogListProps) {
               {post.tags && post.tags.length > 0 && (
                 <div className="tags-list" style={{ marginBottom: "20px" }}>
                   {post.tags.map((tag) => (
-                    <span key={tag.id}>#{tag.name}</span>
+                    <Link
+                      key={tag.id}
+                      href={`/blog?tag=${tag.slug}`}
+                      style={{
+                        marginRight: "10px",
+                        color: "var(--accent-color)",
+                        textDecoration: "none",
+                      }}
+                    >
+                      #{tag.name}
+                    </Link>
                   ))}
                 </div>
               )}
