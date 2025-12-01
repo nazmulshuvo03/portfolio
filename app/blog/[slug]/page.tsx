@@ -1,4 +1,4 @@
-import { getPostBySlug } from "@/lib/strapi";
+import { getPostBySlug, STRAPI_URL } from "@/lib/strapi";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -30,49 +30,78 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  // Construct cover image URL if it exists
+  const coverImageUrl = post.cover?.url
+    ? post.cover.url.startsWith("http")
+      ? post.cover.url
+      : `${STRAPI_URL}${post.cover.url}`
+    : null;
+
   return (
     <section className="section-wrapper blog-single">
       <div className="container">
         {/* Breadcrumbs */}
-        <nav className="mb-8 font-mono text-sm text-[var(--text-secondary)]">
-          <Link href="/" className="hover:text-[var(--accent-color)]">
-            Home
-          </Link>
-          <span className="mx-2">/</span>
-          <Link href="/blog" className="hover:text-[var(--accent-color)]">
-            Blog
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-[var(--accent-color)]">{post.title}</span>
+        <nav className="breadcrumb">
+          <Link href="/">Home</Link>
+          <span className="separator">/</span>
+          <Link href="/blog">Blog</Link>
+          <span className="separator">/</span>
+          <span className="current">{post.title}</span>
         </nav>
 
         <article className="blog-post">
           <header className="post-header">
-            <h1 className="post-title glitch-text">{post.title}</h1>
+            <h1 className="post-title glitch-text" style={{ fontSize: "3rem" }}>
+              {post.title}
+            </h1>
             <div className="post-meta">
-              <span className="date">
+              <span
+                className="date"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  color: "var(--accent-color)",
+                }}
+              >
                 {new Date(post.publishedAt).toISOString().split("T")[0]}
               </span>
+
               {post.categories && post.categories.length > 0 && (
-                <span className="categories">
+                <span
+                  className="categories"
+                  style={{ fontFamily: "var(--font-mono)", marginLeft: "20px" }}
+                >
                   //{" "}
                   {post.categories.map((cat: any, index: number) => (
                     <span key={cat.id}>
                       {index > 0 && ", "}
-                      <Link href={`/blog?category=${cat.slug}`}>
+                      <Link
+                        href={`/blog?category=${cat.slug}`}
+                        style={{ color: "var(--text-secondary)" }}
+                      >
                         {cat.name}
                       </Link>
                     </span>
                   ))}
                 </span>
               )}
+
               {post.tags && post.tags.length > 0 && (
-                <span className="tags" style={{ marginLeft: "20px" }}>
+                <span
+                  className="tags"
+                  style={{ fontFamily: "var(--font-mono)", marginLeft: "20px" }}
+                >
                   [{" "}
                   {post.tags.map((tag: any) => (
-                    <span key={tag.id} style={{ marginRight: "5px" }}>
+                    <Link
+                      key={tag.id}
+                      href={`/blog?tag=${tag.slug}`}
+                      style={{
+                        color: "var(--accent-color)",
+                        marginRight: "5px",
+                      }}
+                    >
                       #{tag.name}
-                    </span>
+                    </Link>
                   ))}{" "}
                   ]
                 </span>
@@ -80,7 +109,12 @@ export default async function BlogPostPage({
             </div>
           </header>
 
-          <div className="post-content">
+          {coverImageUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={coverImageUrl} alt={post.title} className="post-cover" />
+          )}
+
+          <div className="post-content" style={{ marginTop: "50px" }}>
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
@@ -201,19 +235,27 @@ export default async function BlogPostPage({
                     {...props}
                   />
                 ),
-                img: ({ node, ...props }) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    style={{
-                      maxWidth: "100%",
-                      height: "auto",
-                      border: "1px solid var(--border-color)",
-                      margin: "20px 0",
-                    }}
-                    {...props}
-                    alt={props.alt || ""}
-                  />
-                ),
+                img: ({ node, ...props }) => {
+                  // Handle content images (relative or absolute)
+                  const src = (props.src as string) || "";
+                  const imageUrl = src.startsWith("http")
+                    ? src
+                    : `${STRAPI_URL}${src}`;
+                  return (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto",
+                        border: "1px solid var(--border-color)",
+                        margin: "20px 0",
+                      }}
+                      {...props}
+                      src={imageUrl}
+                      alt={props.alt || ""}
+                    />
+                  );
+                },
               }}
             >
               {post.markdownContent || post.content || ""}

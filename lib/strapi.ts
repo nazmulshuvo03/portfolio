@@ -37,7 +37,12 @@ export async function fetchAPI(
 
 export async function getPosts(page = 1, pageSize = 100) {
   const params = {
-    populate: "*",
+    populate: {
+        categories: true,
+        tags: true,
+        cover: true,
+        author: true,
+    },
     sort: ["publishedAt:desc"],
     pagination: {
       page,
@@ -54,7 +59,13 @@ export async function getPostBySlug(slug: string) {
         $eq: slug,
       },
     },
-    populate: "*",
+    populate: {
+        categories: true,
+        tags: true,
+        cover: true,
+        author: true,
+        blocks: true,
+    },
   };
   const data = await fetchAPI("/articles", params);
   return data?.data?.[0];
