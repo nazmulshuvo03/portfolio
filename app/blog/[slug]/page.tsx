@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+import Mermaid from "@/app/components/Mermaid";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -206,6 +207,14 @@ export default async function BlogPostPage({
                 ),
                 code: ({ node, className, children, ...props }: any) => {
                   const match = /language-(\w+)/.exec(className || "");
+                  const isMermaid = match && match[1] === "mermaid";
+
+                  if (isMermaid) {
+                    return (
+                      <Mermaid chart={String(children).replace(/\n$/, "")} />
+                    );
+                  }
+
                   return match ? (
                     <code className={className} {...props}>
                       {children}
