@@ -9,6 +9,9 @@ import Mermaid from "@/app/components/Mermaid";
 import CodeBlock from "@/app/components/CodeBlock";
 import { notFound } from "next/navigation";
 
+// Revalidate every 60 seconds (ISR)
+export const revalidate = 60;
+
 export async function generateMetadata({
   params,
 }: {

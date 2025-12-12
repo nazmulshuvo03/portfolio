@@ -2,6 +2,9 @@ import { Suspense } from "react";
 import { getPosts, getCategories } from "@/lib/strapi";
 import BlogList from "./BlogList";
 
+// Revalidate every 60 seconds (ISR)
+export const revalidate = 60;
+
 export const metadata = {
   title: "Blog | Portfolio",
   description: "Thoughts, tutorials, and updates.",
