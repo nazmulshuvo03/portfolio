@@ -1,7 +1,7 @@
 import qs from "qs";
 
 export const STRAPI_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+  process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:5050";
 
 export async function fetchAPI(
   path: string,
@@ -38,10 +38,10 @@ export async function fetchAPI(
 export async function getPosts(page = 1, pageSize = 100) {
   const params = {
     populate: {
-        categories: true,
-        tags: true,
-        cover: true,
-        author: true,
+      categories: true,
+      tags: true,
+      cover: true,
+      author: true,
     },
     sort: ["publishedAt:desc"],
     pagination: {
@@ -60,11 +60,11 @@ export async function getPostBySlug(slug: string) {
       },
     },
     populate: {
-        categories: true,
-        tags: true,
-        cover: true,
-        author: true,
-        blocks: true,
+      categories: true,
+      tags: true,
+      cover: true,
+      author: true,
+      blocks: true,
     },
   };
   const data = await fetchAPI("/articles", params);

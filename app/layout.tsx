@@ -5,6 +5,9 @@ import portfolioData from "@/data/portfolio.json";
 export const metadata: Metadata = {
   title: `${portfolioData.personal_information.name} | Full Stack Engineer`,
   description: portfolioData.professional_summary,
+  icons: {
+    icon: "/image/icon.png",
+  },
 };
 
 export default function RootLayout({
