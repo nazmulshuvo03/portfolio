@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getPosts, getCategories } from "@/lib/strapi";
 import BlogList from "./BlogList";
 
@@ -21,7 +22,9 @@ export default async function BlogPage() {
           <h2 className="section-title">Blog</h2>
         </div>
 
-        <BlogList posts={posts} categories={categories} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <BlogList posts={posts} categories={categories} />
+        </Suspense>
       </div>
     </section>
   );
