@@ -66,6 +66,15 @@ export async function getPostBySlug(slug: string) {
       author: true,
       blocks: true,
     },
+    fields: [
+      "title",
+      "description",
+      "slug",
+      "publishedAt",
+      "markdownContent",
+      "content",
+      "likeCount",
+    ],
   };
   const data = await fetchAPI("/articles", params);
   return data?.data?.[0];

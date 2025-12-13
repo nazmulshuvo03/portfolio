@@ -7,6 +7,7 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import Mermaid from "@/app/components/Mermaid";
 import CodeBlock from "@/app/components/CodeBlock";
+import LoveButton from "@/app/components/LoveButton";
 import { notFound } from "next/navigation";
 
 // Revalidate every 60 seconds (ISR)
@@ -275,6 +276,11 @@ export default async function BlogPostPage({
             >
               {post.markdownContent || post.content || ""}
             </ReactMarkdown>
+          </div>
+
+          {/* Love Button */}
+          <div className="post-actions">
+            <LoveButton slug={slug} initialCount={post.likeCount || 0} />
           </div>
         </article>
       </div>
