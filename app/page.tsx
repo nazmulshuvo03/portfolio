@@ -1,7 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 import portfolioData from "@/data/portfolio.json";
+import { getRecentPosts } from "@/lib/strapi";
 
-export default function Home() {
+// Revalidate every 60 seconds (ISR)
+export const revalidate = 60;
+
+export default async function Home() {
   const {
     personal_information,
     professional_summary,
@@ -10,6 +15,10 @@ export default function Home() {
     technical_skills,
     certifications,
   } = portfolioData;
+
+  // Fetch recent blog posts
+  const recentPostsData = await getRecentPosts(2);
+  const recentPosts = recentPostsData?.data || [];
 
   return (
     <>
@@ -90,17 +99,91 @@ export default function Home() {
             <span className="section-number">01</span>
             <h2 className="section-title">LATEST_LOGS // THOUGHTS</h2>
           </div>
-          <div className="grid-2-col">
-            <div className="brutalist-card">
-              <div className="card-border"></div>
-              <div className="card-content">
-                <h3>Blog Coming Soon</h3>
-                <p className="institution">
-                  Blog posts will be available here soon.
-                </p>
+          {recentPosts.length > 0 ? (
+            <>
+              <div className="grid-2-col">
+                {recentPosts.map((post: any) => (
+                  <div key={post.id} className="brutalist-card post-item">
+                    <div className="card-border"></div>
+                    <div className="card-content">
+                      <h3>
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          style={{
+                            color: "var(--text-primary)",
+                            textDecoration: "none",
+                          }}
+                        >
+                          {post.title}
+                        </Link>
+                      </h3>
+
+                      <div className="meta-tags">
+                        <span style={{ color: "var(--accent-color)" }}>
+                          {new Date(post.publishedAt).toISOString().split("T")[0]}
+                        </span>
+                        {post.categories && post.categories.length > 0 && (
+                          <span style={{ marginLeft: "10px" }}>
+                            // {post.categories.map((c: any) => c.name).join(", ")}
+                          </span>
+                        )}
+                      </div>
+
+                      <p
+                        style={{ color: "var(--text-secondary)", marginBottom: "20px" }}
+                        className="line-clamp-3"
+                      >
+                        {post.description}
+                      </p>
+
+                      {post.tags && post.tags.length > 0 && (
+                        <div className="tags-list" style={{ marginBottom: "20px" }}>
+                          {post.tags.map((tag: any) => (
+                            <Link
+                              key={tag.id}
+                              href={`/blog?tag=${tag.slug}`}
+                              style={{
+                                marginRight: "10px",
+                                color: "var(--accent-color)",
+                                textDecoration: "none",
+                              }}
+                            >
+                              #{tag.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="btn btn-outline"
+                        style={{ fontSize: "0.8rem", padding: "8px 15px" }}
+                      >
+                        READ_ENTRY
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center" style={{ marginTop: "60px" }}>
+                <Link href="/blog" className="btn btn-outline">
+                  VIEW_ALL_POSTS →
+                </Link>
+              </div>
+            </>
+          ) : (
+            <div className="grid-2-col">
+              <div className="brutalist-card">
+                <div className="card-border"></div>
+                <div className="card-content">
+                  <h3>Blog Coming Soon</h3>
+                  <p className="institution">
+                    Blog posts will be available here soon.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 

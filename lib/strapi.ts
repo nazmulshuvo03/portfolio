@@ -86,3 +86,20 @@ export async function getCategories() {
   };
   return await fetchAPI("/categories", params);
 }
+
+export async function getRecentPosts(limit = 2) {
+  const params = {
+    populate: {
+      categories: true,
+      tags: true,
+      cover: true,
+      author: true,
+    },
+    sort: ["publishedAt:desc"],
+    pagination: {
+      page: 1,
+      pageSize: limit,
+    },
+  };
+  return await fetchAPI("/articles", params);
+}
